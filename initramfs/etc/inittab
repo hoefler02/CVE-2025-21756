@@ -1,0 +1,2 @@
+::sysinit:/etc/init.d/rcS
+::once:-sh -c 'cat /etc/motd; setuidgid 1000 sh; poweroff'

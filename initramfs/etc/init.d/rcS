@@ -1,0 +1,22 @@
+#!/bin/sh
+
+/bin/busybox --install -s
+
+stty raw -echo
+
+chown -R 0:0 /
+
+mkdir -p /proc && mount -t proc none /proc
+mkdir -p /dev  && mount -t devtmpfs devtmpfs /dev
+mkdir -p /tmp  && mount -t tmpfs tmpfs /tmp
+
+# Mount sysfs if not already mounted
+mkdir -p /sys
+mount -t sysfs none /sys
+
+# Mount debugfs for ftrace support
+mkdir -p /sys/kernel/debug
+mount -t debugfs none /sys/kernel/debug
+
+# Run the exploit
+#/x
